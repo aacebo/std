@@ -6,7 +6,7 @@ a library that exposes popular data structures and utilities.
 
 | Name       |      |
 |------------|------|
-| Queue      | [ ]  |
+| Queue      | [x]  |
 | Dictionary | [ ]  |
 | Cache      | [ ]  |
 | Tree       | [ ]  |
