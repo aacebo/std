@@ -5,7 +5,7 @@ import "testing"
 func TestNewQueue(t *testing.T) {
 	queue := NewQueue[int]()
 
-	if queue.Length() != 0 {
+	if queue.Size() != 0 {
 		t.Fatal("queue must be empty by default")
 	}
 }
@@ -14,8 +14,8 @@ func TestQueuePush(t *testing.T) {
 	queue := NewQueue[int]()
 	queue.Push(1)
 
-	if queue.Length() != 1 {
-		t.Fatal("queue length must match push count")
+	if queue.Size() != 1 {
+		t.Fatal("queue size must match push count")
 	}
 }
 
@@ -25,8 +25,8 @@ func TestQueuePop(t *testing.T) {
 	queue.Push(2)
 	removed := queue.Pop()
 
-	if queue.Length() != 1 {
-		t.Fatal("queue length must match push count")
+	if queue.Size() != 1 {
+		t.Fatal("queue size must match push count")
 	}
 
 	if *removed != 1 {
