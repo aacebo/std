@@ -1,2 +1,2 @@
 test:
-	go test
+	go test -coverprofile cover.out
