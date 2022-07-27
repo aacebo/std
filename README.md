@@ -12,3 +12,4 @@ a library that exposes popular data structures and utilities.
 | Tree       | [ ]  |
 | Graph      | [ ]  |
 | Set        | [x]  |
+| List       | [ ]  |
