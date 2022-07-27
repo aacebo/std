@@ -33,6 +33,10 @@ func TestSetRemove(t *testing.T) {
 	if set.Size() != 2 {
 		t.Fatal("set should be of size 2")
 	}
+
+	if *set.At(1) != "three" {
+		t.Fatal("set value at index 1 should be \"three\" after removal of \"two\"")
+	}
 }
 
 func TestSetAt(t *testing.T) {
