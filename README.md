@@ -7,7 +7,7 @@ a library that exposes popular data structures and utilities.
 | Name       |      |
 |------------|------|
 | Queue      | [x]  |
-| Dictionary | [ ]  |
+| Map        | [x]  |
 | Cache      | [ ]  |
 | Tree       | [ ]  |
 | Graph      | [ ]  |
