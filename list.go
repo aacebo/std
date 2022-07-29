@@ -1,4 +1,4 @@
-package structures
+package std
 
 type ListNode[T any] struct {
 	value *T
