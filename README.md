@@ -4,12 +4,13 @@ a library that exposes popular data structures and utilities.
 
 ## Roadmap
 
-| Name       |      |
-|------------|------|
-| Queue      | [x]  |
-| Map        | [x]  |
-| Cache      | [ ]  |
-| Tree       | [ ]  |
-| Graph      | [ ]  |
-| Set        | [x]  |
-| List       | [ ]  |
+| Name       | Description           |       |
+|------------|-----------------------|-------|
+| Queue      | FIFO                  |  [x]  |
+| Map        | Key / Value           |  [x]  |
+| LRUCache   | Least Recently Used   |  [ ]  |
+| LFUCache   | Least Frequently Used |  [ ]  |
+| Tree       |                       |  [ ]  |
+| Graph      |                       |  [ ]  |
+| Set        |                       |  [x]  |
+| List       | Doubly Linked List    |  [ ]  |

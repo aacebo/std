@@ -21,15 +21,13 @@ func NewList[T any]() *List[T] {
 func (self *List[T]) Push(v T) *T {
 	n := ListNode[T]{
 		value: &v,
-		prev: self.last,
+		prev:  self.last,
 	}
 
 	self.last = &n
 
 	if self.first == nil {
 		self.first = &n
-		self.first.next = nil
-		self.first.prev = nil
 	}
 
 	self.size++
@@ -43,15 +41,29 @@ func (self *List[T]) Pop() *T {
 
 	v := self.last.value
 	self.last = self.last.prev
+	self.size--
 
 	return v
+}
+
+func (self *List[T]) At(i int) *T {
+	n := self.first
+
+	for j := 0; j < i && n != nil; j++ {
+		if j == i {
+			return n.value
+		}
+
+		n = n.next
+	}
+
+	return nil
 }
 
 // func (self *List[T]) Remove(i int) *ListNode[T] {
 // 	n := self.first
 
 // 	for n != nil {
-
 
 // 		n = n.next
 // 	}
