@@ -1,10 +1,12 @@
-package std
+package structures
 
-type Set[T string | Number] struct {
+import "github.com/aacebo/std"
+
+type Set[T string | std.Number] struct {
 	values []*T
 }
 
-func NewSet[T string | Number]() *Set[T] {
+func NewSet[T string | std.Number]() *Set[T] {
 	v := Set[T]{values: []*T{}}
 
 	return &v

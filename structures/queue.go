@@ -1,4 +1,4 @@
-package std
+package structures
 
 type Queue[T any] struct {
 	values []*T

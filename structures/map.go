@@ -1,4 +1,4 @@
-package std
+package structures
 
 type Map[T any] struct {
 	values map[string]*T
