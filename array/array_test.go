@@ -35,6 +35,26 @@ func TestArray(t *testing.T) {
 		})
 	})
 
+	t.Run("First", func(t *testing.T) {
+		t.Run("should have correct first element", func(t *testing.T) {
+			v := array.New(0, 1, 2)
+
+			if v.First() != 0 {
+				t.Errorf("first element %d should be %d", v.First(), 0)
+			}
+		})
+	})
+
+	t.Run("Last", func(t *testing.T) {
+		t.Run("should have correct last element", func(t *testing.T) {
+			v := array.New(0, 1, 2)
+
+			if v.Last() != 2 {
+				t.Errorf("last element %d should be %d", v.Last(), 2)
+			}
+		})
+	})
+
 	t.Run("Push", func(t *testing.T) {
 		t.Run("should push element to end", func(t *testing.T) {
 			v := array.New(0, 1, 2)
@@ -49,8 +69,8 @@ func TestArray(t *testing.T) {
 				t.Errorf("size %d should be %d", v.Size(), 4)
 			}
 
-			if v[v.Size()-1] != 10 {
-				t.Errorf("last element %d should be %d", v[v.Size()-1], 10)
+			if v.Last() != 10 {
+				t.Errorf("last element %d should be %d", v.Last(), 10)
 			}
 		})
 	})
@@ -87,8 +107,8 @@ func TestArray(t *testing.T) {
 				t.Errorf("size %d should be %d", v.Size(), 4)
 			}
 
-			if v[0] != -1 {
-				t.Errorf("first element %d should be %d", v[0], -1)
+			if v.First() != -1 {
+				t.Errorf("first element %d should be %d", v.First(), -1)
 			}
 		})
 	})
@@ -119,7 +139,7 @@ func TestArray(t *testing.T) {
 				return a < b
 			})
 
-			if v[0] != 1 || v[2] != 50 {
+			if v.First() != 1 || v.Last() != 50 {
 				t.Errorf("elements should be in acending order")
 			}
 		})
@@ -131,7 +151,7 @@ func TestArray(t *testing.T) {
 				return a > b
 			})
 
-			if v[0] != 50 || v[2] != 1 {
+			if v.First() != 50 || v.Last() != 1 {
 				t.Errorf("elements should be in descending order")
 			}
 		})
@@ -174,7 +194,7 @@ func TestArray(t *testing.T) {
 				t.Errorf("size %d should be %d", v.Size(), 2)
 			}
 
-			if v[0] != 17 || v[1] != 50 {
+			if v.First() != 17 || v.Last() != 50 {
 				t.Errorf("elements should be 17, 50")
 			}
 		})

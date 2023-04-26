@@ -18,6 +18,14 @@ func (self Array[T]) Empty() bool {
 	return self.Size() == 0
 }
 
+func (self Array[T]) First() T {
+	return self[0]
+}
+
+func (self Array[T]) Last() T {
+	return self[self.Size()-1]
+}
+
 func (self *Array[T]) Push(items ...T) {
 	*self = append(*self, items...)
 }
