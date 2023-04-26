@@ -6,13 +6,13 @@ a library that exposes popular data structures and utilities.
 
 | Name       | Description           |       |
 |------------|-----------------------|-------|
-| Queue      | FIFO                  |  [ ]  |
-| PQueue     |                       |  [ ]  |
+| Queue      | FIFO                  |  [x]  |
+| PQueue     |                       |  [x]  |
 | Heap       |                       |  [ ]  |
-| Map        | Key / Value           |  [ ]  |
+| Map        | Key / Value           |  [x]  |
 | LRUCache   | Least Recently Used   |  [ ]  |
 | LFUCache   | Least Frequently Used |  [ ]  |
 | Tree       |                       |  [ ]  |
 | Graph      |                       |  [ ]  |
-| Set        |                       |  [ ]  |
+| Set        |                       |  [x]  |
 | List       | Doubly Linked List    |  [ ]  |
