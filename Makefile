@@ -1,5 +1,8 @@
+fmt:
+	gofmt -w .
+
 test:
 	go test -coverprofile cover.out
 
-coverage:
+test.cov:
 	go tool cover -html=cover.out
