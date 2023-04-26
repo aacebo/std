@@ -150,10 +150,21 @@ func (self *List[T]) Splice(i int, deleteCount int, items ...T) {
 	for _, v := range items {
 		n := listNode[T]{v, nil, node}
 
-		if node.prev != nil {
-			n.prev = node.prev
-			node.prev.next = &n
+		if node != nil {
+			if node.prev != nil {
+				n.prev = node.prev
+				node.prev.next = &n
+			}
+
 			node.prev = &n
+
+			if self.head == node {
+				self.head = &n
+			}
+		} else {
+			n.prev = self.tail
+			self.tail.next = &n
+			self.tail = &n
 		}
 
 		self.size++

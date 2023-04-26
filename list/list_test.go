@@ -280,6 +280,44 @@ func TestList(t *testing.T) {
 				t.Errorf("element at %d with value %d should be %d", 3, l.At(3), 75)
 			}
 		})
+
+		t.Run("should remove head", func(t *testing.T) {
+			l := list.New[int]()
+			l.Push(50, 75, 100, 200)
+
+			if l.Size() != 4 {
+				t.Errorf("size %d should be %d", l.Size(), 4)
+			}
+
+			l.Splice(0, 1, 20)
+
+			if l.Size() != 4 {
+				t.Errorf("size %d should be %d", l.Size(), 4)
+			}
+
+			if l.First() != 20 {
+				t.Errorf("first element %d should be %d", l.First(), 20)
+			}
+		})
+
+		t.Run("should remove tail", func(t *testing.T) {
+			l := list.New[int]()
+			l.Push(50, 75, 100, 200)
+
+			if l.Size() != 4 {
+				t.Errorf("size %d should be %d", l.Size(), 4)
+			}
+
+			l.Splice(3, 1, 20)
+
+			if l.Size() != 4 {
+				t.Errorf("size %d should be %d", l.Size(), 4)
+			}
+
+			if l.Last() != 20 {
+				t.Errorf("last element %d should be %d", l.Last(), 20)
+			}
+		})
 	})
 
 	t.Run("ForEach", func(t *testing.T) {
