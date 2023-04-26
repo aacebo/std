@@ -53,3 +53,15 @@ func (self Array[T]) Find(compare func(T) bool) int {
 		return compare(self[i])
 	})
 }
+
+func (self Array[T]) Filter(compare func(T) bool) Array[T] {
+	arr := Array[T]{}
+
+	for _, v := range self {
+		if compare(v) {
+			arr = append(arr, v)
+		}
+	}
+
+	return arr
+}

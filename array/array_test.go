@@ -157,4 +157,26 @@ func TestArray(t *testing.T) {
 			}
 		})
 	})
+
+	t.Run("Filter", func(t *testing.T) {
+		t.Run("should filter elements", func(t *testing.T) {
+			v := array.New(17, 1, 50)
+
+			if v.Size() != 3 {
+				t.Errorf("size %d should be %d", v.Size(), 3)
+			}
+
+			v = v.Filter(func(a int) bool {
+				return a > 1
+			})
+
+			if v.Size() != 2 {
+				t.Errorf("size %d should be %d", v.Size(), 2)
+			}
+
+			if v[0] != 17 || v[1] != 50 {
+				t.Errorf("elements should be 17, 50")
+			}
+		})
+	})
 }
