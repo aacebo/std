@@ -1,17 +1,15 @@
-package std
+package queue_test
 
-import "testing"
+import (
+	"testing"
 
-func TestPQueue(t *testing.T) {
+	"github.com/aacebo/std/queue"
+)
+
+func TestQueue(t *testing.T) {
 	t.Run("Size", func(t *testing.T) {
 		t.Run("should have correct size", func(t *testing.T) {
-			q := NewPQueue(func(a, b int) bool {
-				return a < b
-			})
-
-			q.Push(0)
-			q.Push(1)
-			q.Push(2)
+			q := queue.New(0, 1, 2)
 
 			if q.Size() != 3 {
 				t.Errorf("should have size of 3")
@@ -21,9 +19,7 @@ func TestPQueue(t *testing.T) {
 
 	t.Run("Empty", func(t *testing.T) {
 		t.Run("should be empty", func(t *testing.T) {
-			q := NewPQueue(func(a, b int) bool {
-				return a < b
-			})
+			q := queue.New[int]()
 
 			if !q.Empty() {
 				t.Errorf("should be empty")
@@ -31,11 +27,7 @@ func TestPQueue(t *testing.T) {
 		})
 
 		t.Run("should not be empty", func(t *testing.T) {
-			q := NewPQueue(func(a, b int) bool {
-				return a < b
-			})
-
-			q.Push(0)
+			q := queue.New(0, 1, 2)
 
 			if q.Empty() {
 				t.Errorf("should not be empty")
@@ -45,13 +37,7 @@ func TestPQueue(t *testing.T) {
 
 	t.Run("Top", func(t *testing.T) {
 		t.Run("should be first element", func(t *testing.T) {
-			q := NewPQueue(func(a, b int) bool {
-				return a < b
-			})
-
-			q.Push(0)
-			q.Push(1)
-			q.Push(2)
+			q := queue.New(0, 1, 2)
 
 			if q.Top() != 0 {
 				t.Errorf("should have top of 0")
@@ -61,13 +47,7 @@ func TestPQueue(t *testing.T) {
 
 	t.Run("Bottom", func(t *testing.T) {
 		t.Run("should be last element", func(t *testing.T) {
-			q := NewPQueue(func(a, b int) bool {
-				return a < b
-			})
-
-			q.Push(0)
-			q.Push(1)
-			q.Push(2)
+			q := queue.New(0, 1, 2)
 
 			if q.Bottom() != 2 {
 				t.Errorf("should have bottom of 2")
@@ -77,22 +57,16 @@ func TestPQueue(t *testing.T) {
 
 	t.Run("Push", func(t *testing.T) {
 		t.Run("should add new element to back", func(t *testing.T) {
-			q := NewPQueue(func(a, b int) bool {
-				return a < b
-			})
-
-			q.Push(0)
-			q.Push(1)
-			q.Push(2)
+			q := queue.New(0, 1, 2)
 
 			if q.Bottom() != 2 {
 				t.Errorf("should have bottom of 2")
 			}
 
-			q.Push(-1)
+			q.Push(5)
 
-			if q.Top() != -1 {
-				t.Errorf("should have top of -1")
+			if q.Bottom() != 5 {
+				t.Errorf("should have bottom of 5")
 			}
 
 			if q.Size() != 4 {
@@ -103,13 +77,7 @@ func TestPQueue(t *testing.T) {
 
 	t.Run("Pop", func(t *testing.T) {
 		t.Run("should remove element from front", func(t *testing.T) {
-			q := NewPQueue(func(a, b int) bool {
-				return a < b
-			})
-
-			q.Push(0)
-			q.Push(1)
-			q.Push(2)
+			q := queue.New(0, 1, 2)
 
 			if q.Top() != 0 {
 				t.Errorf("should have top of 0")

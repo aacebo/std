@@ -1,11 +1,11 @@
-package std
+package queue
 
 type PQueue[T any] struct {
 	items   []T
 	compare func(T, T) bool
 }
 
-func NewPQueue[T any](compare func(T, T) bool) PQueue[T] {
+func NewPriority[T any](compare func(T, T) bool) PQueue[T] {
 	self := PQueue[T]{[]T{}, compare}
 	return self
 }

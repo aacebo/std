@@ -1,8 +1,8 @@
-package std
+package set
 
 type Set[T comparable] map[T]bool
 
-func NewSet[T comparable](items ...T) Set[T] {
+func New[T comparable](items ...T) Set[T] {
 	self := Set[T]{}
 
 	for _, v := range items {

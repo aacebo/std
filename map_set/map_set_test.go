@@ -1,11 +1,15 @@
-package std
+package map_set_test
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/aacebo/std/map_set"
+)
 
 func TestMap(t *testing.T) {
 	t.Run("Size", func(t *testing.T) {
 		t.Run("should have correct size", func(t *testing.T) {
-			m := NewMap[string, int]()
+			m := map_set.New[string, int]()
 			m.Set("a", 0)
 			m.Set("b", 1)
 			m.Set("c", 2)
@@ -18,7 +22,7 @@ func TestMap(t *testing.T) {
 
 	t.Run("Empty", func(t *testing.T) {
 		t.Run("should be empty", func(t *testing.T) {
-			m := NewMap[string, int]()
+			m := map_set.New[string, int]()
 
 			if !m.Empty() {
 				t.Errorf("should be empty")
@@ -26,7 +30,7 @@ func TestMap(t *testing.T) {
 		})
 
 		t.Run("should not be empty", func(t *testing.T) {
-			m := NewMap[string, int]()
+			m := map_set.New[string, int]()
 			m.Set("a", 0)
 
 			if m.Empty() {
@@ -37,7 +41,7 @@ func TestMap(t *testing.T) {
 
 	t.Run("Has", func(t *testing.T) {
 		t.Run("should have elements", func(t *testing.T) {
-			m := NewMap[string, int]()
+			m := map_set.New[string, int]()
 			m.Set("a", 0)
 			m.Set("b", 1)
 			m.Set("c", 2)
@@ -48,7 +52,7 @@ func TestMap(t *testing.T) {
 		})
 
 		t.Run("should not have element", func(t *testing.T) {
-			m := NewMap[string, int]()
+			m := map_set.New[string, int]()
 			m.Set("a", 0)
 			m.Set("b", 1)
 			m.Set("c", 2)
@@ -61,7 +65,7 @@ func TestMap(t *testing.T) {
 
 	t.Run("Set", func(t *testing.T) {
 		t.Run("should set key/value", func(t *testing.T) {
-			m := NewMap[string, int]()
+			m := map_set.New[string, int]()
 			m.Set("a", 0)
 
 			if m.Get("a") != 0 {
@@ -78,7 +82,7 @@ func TestMap(t *testing.T) {
 
 	t.Run("Delete", func(t *testing.T) {
 		t.Run("should delete element", func(t *testing.T) {
-			m := NewMap[string, int]()
+			m := map_set.New[string, int]()
 			m.Set("a", 0)
 
 			if !m.Has("a") {

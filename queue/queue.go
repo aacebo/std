@@ -1,8 +1,8 @@
-package std
+package queue
 
 type Queue[T any] []T
 
-func NewQueue[T any](items ...T) Queue[T] {
+func New[T any](items ...T) Queue[T] {
 	self := Queue[T]{}
 	self = append(self, items...)
 	return self
