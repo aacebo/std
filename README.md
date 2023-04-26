@@ -8,7 +8,6 @@ a library that exposes popular data structures and utilities.
 |------------|-----------------------|-------|
 | Queue      | FIFO                  |  [x]  |
 | PQueue     |                       |  [x]  |
-| Heap       |                       |  [ ]  |
 | Map        | Key / Value           |  [x]  |
 | LRUCache   | Least Recently Used   |  [ ]  |
 | LFUCache   | Least Frequently Used |  [ ]  |
@@ -16,3 +15,4 @@ a library that exposes popular data structures and utilities.
 | Graph      |                       |  [ ]  |
 | Set        |                       |  [x]  |
 | List       | Doubly Linked List    |  [ ]  |
+| Array		 |						 |  [ ]  |
