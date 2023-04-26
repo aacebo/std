@@ -131,6 +131,78 @@ func TestArray(t *testing.T) {
 		})
 	})
 
+	t.Run("Splice", func(t *testing.T) {
+		t.Run("should remove element", func(t *testing.T) {
+			v := array.New(0, 1, 2)
+
+			if v.Size() != 3 {
+				t.Errorf("size %d should be %d", v.Size(), 3)
+			}
+
+			v.Splice(1, 1)
+
+			if v.Size() != 2 {
+				t.Errorf("size %d should be %d", v.Size(), 2)
+			}
+
+			if v.First() != 0 || v.Last() != 2 {
+				t.Errorf("elements should be 0, 2")
+			}
+		})
+
+		t.Run("should add element", func(t *testing.T) {
+			v := array.New(0, 1, 2)
+
+			if v.Size() != 3 {
+				t.Errorf("size %d should be %d", v.Size(), 3)
+			}
+
+			v.Splice(1, 0, 25)
+
+			if v.Size() != 4 {
+				t.Errorf("size %d should be %d", v.Size(), 4)
+			}
+
+			if v.First() != 0 || v.Last() != 2 {
+				t.Errorf("elements should be 0, 2")
+			}
+
+			if v[1] != 25 {
+				t.Errorf("element %d should be %d", v[2], 25)
+			}
+
+			if v[2] != 1 {
+				t.Errorf("element %d should be %d", v[2], 1)
+			}
+		})
+
+		t.Run("should add element and remove element", func(t *testing.T) {
+			v := array.New(0, 1, 2)
+
+			if v.Size() != 3 {
+				t.Errorf("size %d should be %d", v.Size(), 3)
+			}
+
+			v.Splice(1, 1, 25, 50)
+
+			if v.Size() != 4 {
+				t.Errorf("size %d should be %d", v.Size(), 4)
+			}
+
+			if v.First() != 0 || v.Last() != 2 {
+				t.Errorf("elements should be 0, 2")
+			}
+
+			if v[1] != 25 {
+				t.Errorf("element %d should be %d", v[2], 25)
+			}
+
+			if v[2] != 50 {
+				t.Errorf("element %d should be %d", v[2], 50)
+			}
+		})
+	})
+
 	t.Run("Sort", func(t *testing.T) {
 		t.Run("should sort ascending", func(t *testing.T) {
 			v := array.New(17, 1, 50)
@@ -176,6 +248,14 @@ func TestArray(t *testing.T) {
 				t.Errorf("element %d should be at index %d", 50, 2)
 			}
 		})
+
+		t.Run("should not find element", func(t *testing.T) {
+			v := array.New(0, 1, 2)
+
+			if i := v.Find(func(a int) bool { return a == 50 }); i != -1 {
+				t.Errorf("element %d should not exist", 50)
+			}
+		})
 	})
 
 	t.Run("Filter", func(t *testing.T) {
@@ -196,6 +276,26 @@ func TestArray(t *testing.T) {
 
 			if v.First() != 17 || v.Last() != 50 {
 				t.Errorf("elements should be 17, 50")
+			}
+		})
+	})
+
+	t.Run("Slice", func(t *testing.T) {
+		t.Run("should get sub array", func(t *testing.T) {
+			v := array.New(50, 1, 79, 1000)
+
+			if v.Size() != 4 {
+				t.Errorf("size %d should be %d", v.Size(), 4)
+			}
+
+			v = v.Slice(1, v.Size())
+
+			if v.Size() != 3 {
+				t.Errorf("size %d should be %d", v.Size(), 3)
+			}
+
+			if i := v.Find(func(a int) bool { return a == 50 }); i > -1 {
+				t.Errorf("element %d should not exist at index %d", 50, i)
 			}
 		})
 	})

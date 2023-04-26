@@ -50,6 +50,19 @@ func (self *Array[T]) Shift() T {
 	return v
 }
 
+func (self *Array[T]) Splice(i int, deleteCount int, items ...T) {
+	arr := *self
+	before := arr[:i]
+	after := arr[i:]
+
+	if deleteCount > 0 {
+		after = arr[i+1:]
+	}
+
+	arr = append(before, append(items, after...)...)
+	*self = arr
+}
+
 func (self Array[T]) Sort(compare func(T, T) bool) {
 	sort.Slice(self, func(i int, j int) bool {
 		return compare(self[i], self[j])
@@ -57,9 +70,15 @@ func (self Array[T]) Sort(compare func(T, T) bool) {
 }
 
 func (self Array[T]) Find(compare func(T) bool) int {
-	return sort.Search(len(self), func(i int) bool {
-		return compare(self[i])
+	i := sort.Search(len(self), func(j int) bool {
+		return compare(self[j])
 	})
+
+	if i < 0 || i > self.Size()-1 {
+		return -1
+	}
+
+	return i
 }
 
 func (self Array[T]) Filter(compare func(T) bool) Array[T] {
@@ -72,4 +91,8 @@ func (self Array[T]) Filter(compare func(T) bool) Array[T] {
 	}
 
 	return arr
+}
+
+func (self Array[T]) Slice(start int, end int) Array[T] {
+	return self[start:end]
 }
