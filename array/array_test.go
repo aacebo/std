@@ -232,16 +232,28 @@ func TestArray(t *testing.T) {
 	t.Run("Find", func(t *testing.T) {
 		t.Run("should find element index", func(t *testing.T) {
 			v := array.New(17, 1, 50)
-			i := v.Find(func(a int) bool {
-				return a == 1
+			i := v.Find(func(a int) int {
+				if a == 1 {
+					return 0
+				} else if a > 1 {
+					return 1
+				}
+
+				return -1
 			})
 
 			if i != 1 {
 				t.Errorf("element %d should be at index %d", 1, 1)
 			}
 
-			i = v.Find(func(a int) bool {
-				return a == 50
+			i = v.Find(func(a int) int {
+				if a == 50 {
+					return 0
+				} else if a > 50 {
+					return 1
+				}
+
+				return -1
 			})
 
 			if i != 2 {
@@ -251,8 +263,17 @@ func TestArray(t *testing.T) {
 
 		t.Run("should not find element", func(t *testing.T) {
 			v := array.New(0, 1, 2)
+			i := v.Find(func(a int) int {
+				if a == 50 {
+					return 0
+				} else if a > 50 {
+					return 1
+				}
 
-			if i := v.Find(func(a int) bool { return a == 50 }); i != -1 {
+				return -1
+			})
+
+			if i != -1 {
 				t.Errorf("element %d should not exist", 50)
 			}
 		})
@@ -294,7 +315,17 @@ func TestArray(t *testing.T) {
 				t.Errorf("size %d should be %d", v.Size(), 3)
 			}
 
-			if i := v.Find(func(a int) bool { return a == 50 }); i > -1 {
+			i := v.Find(func(a int) int {
+				if a == 50 {
+					return 0
+				} else if a > 50 {
+					return 1
+				}
+
+				return -1
+			})
+
+			if i > -1 {
 				t.Errorf("element %d should not exist at index %d", 50, i)
 			}
 		})

@@ -1,6 +1,8 @@
 package array
 
-import "sort"
+import (
+	"sort"
+)
 
 type Array[T any] []T
 
@@ -69,16 +71,23 @@ func (self Array[T]) Sort(compare func(T, T) bool) {
 	})
 }
 
-func (self Array[T]) Find(compare func(T) bool) int {
-	i := sort.Search(len(self), func(j int) bool {
-		return compare(self[j])
-	})
+func (self Array[T]) Find(compare func(T) int) int {
+	left, right := 0, self.Size()-1
 
-	if i < 0 || i > self.Size()-1 {
-		return -1
+	for left <= right {
+		mid := (left + right) / 2
+		dif := compare(self[mid])
+
+		if dif == 0 {
+			return mid
+		} else if dif < 0 {
+			left = mid + 1
+		} else {
+			right = mid - 1
+		}
 	}
 
-	return i
+	return -1
 }
 
 func (self Array[T]) Filter(compare func(T) bool) Array[T] {
